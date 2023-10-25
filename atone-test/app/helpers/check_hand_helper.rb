@@ -1,0 +1,2 @@
+module CheckHandHelper
+end

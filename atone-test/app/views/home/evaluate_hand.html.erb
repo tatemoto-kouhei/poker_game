@@ -1,0 +1,25 @@
+<header>
+  </div>
+  <ul class="header-menus">
+    <li>ポーカーハンドチェッカー</li>
+  </ul>
+</header>
+
+<div class="about-main">
+  <p>
+  この画面ではポーカーのハンドに応じて一番強い役を返します．
+  </p>
+  <%= form_tag({controller: 'home',action: 'evaluate_hand'}, method: :post) do%>
+
+    <div class="form">
+      <div class="form-body">
+        <textarea name = "hand"></textarea>
+        <input type="submit" value="ハンドを確認する">
+      </div>
+    </div>
+  <% end %>
+  
+  <p>
+  入力された手札は <%= @result %> 
+  </p>
+</div>
