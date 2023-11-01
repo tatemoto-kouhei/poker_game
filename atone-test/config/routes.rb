@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   post "play_poker" => "poker_apis#play_poker"
 
+  mount API::Root => "/"
+
   #For API
 
 

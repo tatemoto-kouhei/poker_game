@@ -1,4 +1,4 @@
-require "/Users/k.tatemoto/rails-project/atone-test/app/services/hand_class.rb"
+require "../../app/services/hand.rb"
 require "pry"
 
 describe Card do

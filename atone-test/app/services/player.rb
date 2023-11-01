@@ -1,5 +1,4 @@
-require '/Users/k.tatemoto/rails-project/atone-test/app/services/card.rb'
-
+require_relative 'hand.rb'
 
 # プレイヤークラス（API用）
 class Player
@@ -16,9 +15,14 @@ class Player
     @best_hand_flag = false
     @poker_hand = nil
     @poker_hand_rank = 0
-    @error_message = nil  # エラーメッセージを初期化
-    hand.convert_string_to_hand(@cards, deck)  # input_string -> @cards と修正
+    @error_message = nil  
+
+    hand.convert_string_to_hand(@cards, deck)  
+
   rescue StandardError => e
-    @error_message = e.message  # エラーメッセージを設定
+    # エラーメッセージを設定
+    @error_message = e.message  
+    #Handインスタンをnilにしておく
+    @hand = nil
   end
 end

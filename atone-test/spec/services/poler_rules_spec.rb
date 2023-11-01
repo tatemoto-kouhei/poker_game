@@ -1,4 +1,4 @@
-require "/Users/k.tatemoto/rails-project/atone-test/app/services/poker_ranker.rb"  # テスト対象のコードファイルをインポート
+require "../../app/services/poker_rules.rb"  # テスト対象のコードファイルをインポート
 
 describe PokerRules do
   let(:hand) { Hand.new }
@@ -11,8 +11,7 @@ describe PokerRules do
       hand.add_card(Card.new('H', '6'))
       hand.add_card(Card.new('H', '5'))
 
-      poker_rules = PokerRules.new(hand)
-      expect(poker_rules.evaluate).to eq('Straight Flush')
+      expect(PokerRules::evaluate(hand)).to eq('ストレートフラッシュ')
     end
 
     it 'correctly identifies a Four of a Kind' do
@@ -22,8 +21,7 @@ describe PokerRules do
       hand.add_card(Card.new('S', '4'))
       hand.add_card(Card.new('D', '7'))
 
-      poker_rules = PokerRules.new(hand)
-      expect(poker_rules.evaluate).to eq('Four of a Kind')
+      expect(PokerRules::evaluate(hand)).to eq('フォーカード')
     end
 
     it 'correctly identifies a Full House' do
@@ -33,8 +31,7 @@ describe PokerRules do
       hand.add_card(Card.new('H', '9'))
       hand.add_card(Card.new('C', '9'))
 
-      poker_rules = PokerRules.new(hand)
-      expect(poker_rules.evaluate).to eq('Full House')
+      expect(PokerRules::evaluate(hand)).to eq('フルハウス')
     end
 
     it 'correctly identifies a Flush' do
@@ -44,8 +41,7 @@ describe PokerRules do
       hand.add_card(Card.new('D', '7'))
       hand.add_card(Card.new('D', '13'))
 
-      poker_rules = PokerRules.new(hand)
-      expect(poker_rules.evaluate).to eq('Flush')
+      expect(PokerRules::evaluate(hand)).to eq('フラッシュ')
     end
 
     it 'correctly identifies a Straight' do
@@ -55,8 +51,8 @@ describe PokerRules do
       hand.add_card(Card.new('H', '11'))
       hand.add_card(Card.new('D', '12'))
 
-      poker_rules = PokerRules.new(hand)
-      expect(poker_rules.evaluate).to eq('Straight')
+
+      expect(PokerRules::evaluate(hand)).to eq('ストレート')
     end
 
     it 'correctly identifies a Three of a Kind' do
@@ -66,8 +62,8 @@ describe PokerRules do
       hand.add_card(Card.new('S', '9'))
       hand.add_card(Card.new('D', '13'))
 
-      poker_rules = PokerRules.new(hand)
-      expect(poker_rules.evaluate).to eq('Three of a Kind')
+
+      expect(PokerRules::evaluate(hand)).to eq('スリーカード')
     end
 
     it 'correctly identifies Two Pair' do
@@ -77,8 +73,8 @@ describe PokerRules do
       hand.add_card(Card.new('D', '13'))
       hand.add_card(Card.new('H', '2'))
 
-      poker_rules = PokerRules.new(hand)
-      expect(poker_rules.evaluate).to eq('Two Pair')
+
+      expect(PokerRules::evaluate(hand)).to eq('2ペア')
     end
 
     it 'correctly identifies One Pair' do
@@ -88,8 +84,8 @@ describe PokerRules do
       hand.add_card(Card.new('H', '4'))
       hand.add_card(Card.new('D', '5'))
 
-      poker_rules = PokerRules.new(hand)
-      expect(poker_rules.evaluate).to eq('One Pair')
+
+      expect(PokerRules::evaluate(hand)).to eq('1ペア')
     end
 
     it 'correctly identifies High Card' do
@@ -99,8 +95,8 @@ describe PokerRules do
       hand.add_card(Card.new('S', '11'))
       hand.add_card(Card.new('H', '1'))
 
-      poker_rules = PokerRules.new(hand)
-      expect(poker_rules.evaluate).to eq('High Card')
+
+      expect(PokerRules::evaluate(hand)).to eq('ハイカード')
     end
   end
 end
