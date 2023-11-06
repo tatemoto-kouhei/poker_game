@@ -13,7 +13,12 @@ module API
 
         post do
           request_body = JSON.parse(request.body.read)
-          string_hands = request_body["cards"]
+
+          unless request_body["cards"].nil?
+            string_hands = request_body["cards"]
+          else
+            error!({error: "不正なJSON形式リクエストが行われました.「cards」キーが存在しません"})
+          end
           #ポーカーゲームの生成・初期化を行う
           game = PokerGame.new(string_hands)
 
