@@ -27,5 +27,6 @@ module AtoneTest
     config.autoload_paths += Dir[Rails.root.join('app', 'apis', '*')]
     ##Servicesディレクトリのクラスをオートロードする
     #config.autoload_paths += %W(#{root}/app/services/)
+    config.middleware.insert_before ActionDispatch::ParamsParser, 'RescueJsonParseErrors'
   end
 end

@@ -11,16 +11,9 @@ module API
       format :json
       resource :poker do
 
-        # GET /api/ver1/poker
-        # desc 'ポーカーの役を返す'
-        # prefix 'poker/'
         post do
-          begin
-            request_body = JSON.parse(request.body.read)
-            string_hands = request_body["cards"]
-          rescue JSON::ParserError => error_msg
-            error!({error: error_msg})
-          end
+          request_body = JSON.parse(request.body.read)
+          string_hands = request_body["cards"]
           #ポーカーゲームの生成・初期化を行う
           game = PokerGame.new(string_hands)
 
