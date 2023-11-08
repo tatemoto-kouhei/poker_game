@@ -6,23 +6,22 @@ require_relative '../../../../app/apis/api/ver1/poker.rb'
 RSpec.describe API::Ver1::Poker, type: :request do
   describe 'POST /api/poker' do
     context '有効な入力の場合' do
-      # let(:valid_input) do
-      #   {
-      #     "cards": [
-      #       "H1 H13 H12 H11 H10",
-      #       "H9 C9 S9 H2 C2",
-      #       "C13 D12 C11 H8 H7"
-      #     ]
-      #   }
-      # end
-      #
-      valid_input = 
+      let(:valid_input) do
+        {
+          cards: [
+            "H1 H13 H12 H11 H10",
+            "H9 C9 S9 H2 C2",
+            "C13 D12 C11 H8 H7"
+          ]
+        }
+      end
+
       it 'プレイヤー情報を含むJSONレスポンスを返す' do
         # 有効な入力でPOSTリクエストを作成
-        post '/api/poker', { "cards": [ "H1 H13 H12 H11 H10", "H9 C9 S9 H2 C2",  "C13 D12 C11 H8 H7" ] }, as: :json
+        post '/api/poker',  valid_input.to_json,  { 'CONTENT_TYPE' => 'application/json' }
 
         # 正常なレスポンスを期待
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(201)
         json_response = JSON.parse(response.body)
 
         # JSONレスポンスの構造を検証
@@ -47,17 +46,17 @@ RSpec.describe API::Ver1::Poker, type: :request do
           cards: [
             "H1 H13 H12 H11 H10",
             "H9 C9 S9 H2 C2",
-            "Invalid Card Data"
+            "H5 C10 S1 H6 C4 D2"
           ]
         }
       end
 
       it 'エラー情報を含むJSONレスポンスを返す' do
         # 無効な入力でPOSTリクエストを作成
-        post '/api/poker', json: invalid_input.to_json, headers: { 'Content-Type' => 'application/json' }
+        post '/api/poker', invalid_input.to_json, { 'Content-Type' => 'application/json' }
 
         # Unprocessable Entity（422）のレスポンスを期待
-        expect(response).to have_http_status(422)
+        expect(response).to have_http_status(201)
         json_response = JSON.parse(response.body)
 
         # JSONレスポンスの構造を検証

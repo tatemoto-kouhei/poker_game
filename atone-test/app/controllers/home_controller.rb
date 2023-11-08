@@ -10,19 +10,19 @@ class HomeController < ApplicationController
   def evaluate_hand
 
     if request.post?
-      input_string = params[:hand] # リクエストからカードの文字列を取得
+      @input_string = params[:hand] # リクエストからカードの文字列を取得
       deck = Deck.new
       hand = Hand.new
+      error_message = []
 
-      begin
-        hand.convert_string_to_hand(input_string,deck)
-      rescue => error_message
-        @result = error_message
-      end
+      hand.convert_string_to_hand(@input_string,deck,error_message)
 
-      if @result.nil?
+      unless error_message.empty?
+        @result = error_message.join(",  ")
+      else
 
-        @result = PokerRules::evaluate(hand)
+        poker_hand = PokerRules::evaluate(hand)
+        @result = "入力された手札は" + poker_hand + "です"
       end
 
       render 'evaluate_hand'
