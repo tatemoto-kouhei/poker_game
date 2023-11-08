@@ -33,7 +33,7 @@ class PokerGame
   #手札に対する役を判定する
   def find_best_hand
     @players.each do |player|
-      if player.error_message.nil?
+      if player.error_message.empty?
         player.poker_hand = PokerRules::evaluate(player.hand)
         if @best_hand.nil? || @hand_ranker[player.poker_hand] >= @hand_ranker[@best_hand]
           @best_hand = player.poker_hand

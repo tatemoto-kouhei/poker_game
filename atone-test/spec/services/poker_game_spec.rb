@@ -3,6 +3,7 @@ require 'pry'
 
 
 describe PokerGame do
+
   context "with valid input" do
     it "determines the best hand correctly" do
       string_hands = ['H1 D1 S1 S11 S4', 'H2 D11 S3 S5 S12', 'C1 C3 C11 C2 C4']
@@ -23,7 +24,7 @@ describe PokerGame do
 
       poker_game = PokerGame.new(string_hands)
 
-      expect(poker_game.players[0].error_message).to eq("無効なカードが入力されました: X1")
+      expect(poker_game.players[0].error_message[0]).to eq("無効なカードが入力されました: X1")
     end
 
     it "raises an error and sets an error message for improperly formatted input" do
@@ -36,7 +37,7 @@ describe PokerGame do
       expect(poker_game.players[0].best_hand_flag).to be false
       expect(poker_game.players[1].best_hand_flag).to be true
       expect(poker_game.players[2].best_hand_flag).to be false
-      expect(poker_game.players[2].error_message).to eq("手札の数は5枚である必要があります")
+      expect(poker_game.players[2].error_message[0]).to eq("手札の数は5枚である必要があります")
     end
   end
 end

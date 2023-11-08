@@ -3,8 +3,8 @@ require "../../app/services/poker_rules.rb"  # テスト対象のコードファ
 describe PokerRules do
   let(:hand) { Hand.new }
 
-  context 'when evaluating poker hands' do
-    it 'correctly identifies a Straight Flush' do
+  context 'ポーカーの役を評価する' do
+    it 'ストレートフラッシュ' do
       hand.add_card(Card.new('H', '9'))
       hand.add_card(Card.new('H', '8'))
       hand.add_card(Card.new('H', '7'))
@@ -14,7 +14,7 @@ describe PokerRules do
       expect(PokerRules::evaluate(hand)).to eq('ストレートフラッシュ')
     end
 
-    it 'correctly identifies a Four of a Kind' do
+    it 'フォーカード' do
       hand.add_card(Card.new('C', '4'))
       hand.add_card(Card.new('D', '4'))
       hand.add_card(Card.new('H', '4'))
@@ -24,7 +24,7 @@ describe PokerRules do
       expect(PokerRules::evaluate(hand)).to eq('フォーカード')
     end
 
-    it 'correctly identifies a Full House' do
+    it 'フルハウス' do
       hand.add_card(Card.new('S', '6'))
       hand.add_card(Card.new('H', '6'))
       hand.add_card(Card.new('D', '6'))
@@ -34,7 +34,7 @@ describe PokerRules do
       expect(PokerRules::evaluate(hand)).to eq('フルハウス')
     end
 
-    it 'correctly identifies a Flush' do
+    it 'フラッシュ' do
       hand.add_card(Card.new('D', '2'))
       hand.add_card(Card.new('D', '8'))
       hand.add_card(Card.new('D', '4'))
@@ -44,7 +44,7 @@ describe PokerRules do
       expect(PokerRules::evaluate(hand)).to eq('フラッシュ')
     end
 
-    it 'correctly identifies a Straight' do
+    it 'ストレート' do
       hand.add_card(Card.new('H', '8'))
       hand.add_card(Card.new('C', '9'))
       hand.add_card(Card.new('S', '10'))
@@ -55,7 +55,7 @@ describe PokerRules do
       expect(PokerRules::evaluate(hand)).to eq('ストレート')
     end
 
-    it 'correctly identifies a Three of a Kind' do
+    it 'スリーカード' do
       hand.add_card(Card.new('C', '3'))
       hand.add_card(Card.new('D', '3'))
       hand.add_card(Card.new('H', '3'))
@@ -66,7 +66,7 @@ describe PokerRules do
       expect(PokerRules::evaluate(hand)).to eq('スリーカード')
     end
 
-    it 'correctly identifies Two Pair' do
+    it '2ペア' do
       hand.add_card(Card.new('S', '8'))
       hand.add_card(Card.new('C', '8'))
       hand.add_card(Card.new('H', '13'))
@@ -77,7 +77,7 @@ describe PokerRules do
       expect(PokerRules::evaluate(hand)).to eq('2ペア')
     end
 
-    it 'correctly identifies One Pair' do
+    it '1ペア' do
       hand.add_card(Card.new('D', '10'))
       hand.add_card(Card.new('C', '10'))
       hand.add_card(Card.new('S', '3'))
@@ -88,7 +88,7 @@ describe PokerRules do
       expect(PokerRules::evaluate(hand)).to eq('1ペア')
     end
 
-    it 'correctly identifies High Card' do
+    it 'ハイカード' do
       hand.add_card(Card.new('C', '6'))
       hand.add_card(Card.new('H', '7'))
       hand.add_card(Card.new('D', '10'))

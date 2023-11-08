@@ -15,14 +15,13 @@ class Player
     @best_hand_flag = false
     @poker_hand = nil
     @poker_hand_rank = 0
-    @error_message = nil  
+    @error_message = [] 
 
-    hand.convert_string_to_hand(@cards, deck)  
+    hand.convert_string_to_hand(@cards, deck,@error_message)  
 
-  rescue StandardError => e
-    # エラーメッセージを設定
-    @error_message = e.message  
-    #Handインスタンをnilにしておく
-    @hand = nil
+    unless error_message.empty?
+      @hand = nil
+    end
+
   end
 end

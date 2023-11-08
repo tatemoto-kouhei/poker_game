@@ -3,8 +3,8 @@ require "pry"
 
 describe Deck do
 #カードをデッキに正しく追加できているか
-  context 'when adding cards to the deck' do
-    it 'adds a card to the deck' do
+  context '#add_card' do
+    it 'デッキにカードを追加する' do
       deck = Deck.new
       card = Card.new('H', '2')
       deck.add_card(card)
@@ -12,7 +12,7 @@ describe Deck do
     end
 
     #重複したカードがデッキに追加された際にエラーを返すか
-    it 'does not add a duplicate card to the deck' do
+    it '追加するカードが既にデッキ内に存在している' do
       deck = Deck.new
       card1 = Card.new('S', '12')
       card2 = Card.new('S', '12')

@@ -7,9 +7,9 @@ require_relative '../../app/services/for_json.rb'
 
 
 RSpec.describe ForJson do
-  describe 'players_info_as_json' do
-    it 'generates JSON output for players with no errors' do
-      # テスト用のポーカーゲームを生成
+  describe '#players_info_as_json' do
+    it 'エラーがない時のJSON形式でのアウトプット' do
+      # 適切な手札でテスト用のポーカーゲームを生成
       game = PokerGame.new(['H1 D1 S1 S11 S4', 'H2 D11 S3 S5 S12'])
       game.evaluate_best_hand_player
 
@@ -31,8 +31,8 @@ RSpec.describe ForJson do
       expect(player_info["best"]).to be(true)
     end
 
-    it 'generates JSON output for players with errors' do
-      # エラーを含むテスト用のポーカーゲームを生成
+    it 'エラーを含むJSON形式のアウトプット' do
+      # 不正な手札と適切な手札でテスト用のポーカーゲームを生成
       game = PokerGame.new(['H1 D1 S1 S11 X4', 'H2 D11 S3 S5 S12'])
       game.evaluate_best_hand_player
 
@@ -64,6 +64,30 @@ RSpec.describe ForJson do
       expect(error_info).to have_key("msg")
       expect(error_info["msg"]).to be_a(String)
     end
+
+    it 'エラーのみのJSON形式のアウトプット' do
+      # 不正な手札でテスト用のポーカーゲームを生成
+      game = PokerGame.new(['H1 D1 S1 S11 X4'])
+      game.evaluate_best_hand_player
+
+      # JSONアウトプットを生成
+      json_output = ForJson.players_info_as_json(game)
+
+      expect(json_output).not_to have_key(:result)
+      expect(json_output).to have_key(:error)
+
+      errors = json_output[:error]
+
+      expect(errors).to be_a(Array)
+      expect(errors.length).to eq(1)
+
+      error_info = errors[0]
+
+      expect(error_info).to have_key("card")
+      expect(error_info).to have_key("msg")
+      expect(error_info["msg"]).to be_a(String)
+    end
+
   end
 end
 

@@ -1,3 +1,5 @@
+require 'pry'
+
 # カードクラス
 class Card
   attr_reader :suit, :rank
@@ -22,6 +24,10 @@ class Card
   # カードを文字列として表現します。
   def to_s
     "#{suit}#{rank}"
+  end
+
+  def !=(other)
+    self.suit != other.suit || self.rank != other.rank
   end
 end
 
