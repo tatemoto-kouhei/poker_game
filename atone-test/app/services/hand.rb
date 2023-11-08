@@ -14,6 +14,8 @@ class Hand
   def add_card(card)
     # カードの要素が正当でない場合エラー
     unless card.valid?
+
+      @cards << card
       raise ArgumentError, "無効なカードが入力されました: #{card}"
     end
 
@@ -26,19 +28,37 @@ class Hand
   end
 
   # 文字列をハンドに変換するメソッド
-  def convert_string_to_hand(input_string, deck)
-    input_string.split.each do |card_string|
+  def convert_string_to_hand(input_string, deck,error_message)
+    input_string.split(/[[:blank:]]+/).each do |card_string|
       suit = card_string[0]
       rank = card_string[1..-1]
+
       card = Card.new(suit, rank)
 
-      # ハンドにカードを追加
-      add_card(card)
+      begin
+        # ハンドにカードを追加
+        add_card(card)
+        # デッキにカードを追加
+        deck.add_card(card)
+     rescue => e
+        error_message << e.message
+      end
 
-      # デッキにカードを追加
-      deck.add_card(card)
+      # begin
+      #   # デッキにカードを追加
+      #   deck.add_card(card)
+      # rescue ArgumentError => e
+      #   error_message << e.message
+      # end
     end
-    is_card_count_valid
+
+    begin
+
+      is_card_count_valid
+    rescue ArgumentError => e
+      error_message << e.message
+    end
+
   end
 
   #カードの枚数がルールに則っているか確認する　
