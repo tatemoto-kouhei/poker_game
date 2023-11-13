@@ -12,7 +12,7 @@ module API
           unless request_body["cards"].nil?
             string_hands = request_body["cards"]
           else
-            error!({error: "不正なリクエストが行われました.「cards」キーが存在しません"})
+            error!({:error => "不正なリクエストが行われました.「cards」キーが存在しません"})
           end
           #ポーカーゲームの生成・初期化を行う
           game = PokerGame.new(string_hands)

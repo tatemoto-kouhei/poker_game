@@ -7,19 +7,30 @@
 
 <div class="about-main">
   <p>
-  この画面ではポーカーのハンドに応じて一番強い役を返します．
+  <center>
+   
+    トランプのカードをスート(S,D,C,H)，ランク(2,3,4...13,1)で入力してください，
+    <br>
+    ＊カードごとに半角スペースを開けて入力する必要があります．
+
+  </center>
+
   </p>
   <%= form_tag({controller: 'home',action: 'evaluate_hand'}, method: :post) do%>
 
     <div class="form">
       <div class="form-body">
         <textarea name = "hand"></textarea>
-        <input type="submit" value="ハンドを確認する">
+        <input type="submit" value="役を確認">
       </div>
     </div>
   <% end %>
-  
+
   <p>
-  入力された手札は <%= @result %> 
+  <center>
+    <%= @input_string %>
+    <br>
+    <%= @result %> 
+  </center>
   </p>
 </div>

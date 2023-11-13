@@ -41,13 +41,6 @@ class Hand
      rescue => e
         error_message << e.message
       end
-
-      # begin
-      #   # デッキにカードを追加
-      #   deck.add_card(card)
-      # rescue ArgumentError => e
-      #   error_message << e.message
-      # end
     end
 
     begin

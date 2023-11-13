@@ -1,4 +1,4 @@
-require "../../app/services/deck.rb"
+require_relative "../../app/services/deck.rb"
 require "pry"
 
 describe Deck do

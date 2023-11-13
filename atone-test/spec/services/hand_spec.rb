@@ -1,16 +1,5 @@
-require "../../app/services/hand.rb"
+require_relative "../../app/services/hand.rb"
 require "pry"
-
-RSpec::Matchers.define :be_same_cards_array do |output_cards|
-  match do |input_cards|
-    input_cards.each_with_index do |card,index|
-
-       if card!=output_cards[index]
-         return
-       end 
-    end
-  end
-end
 
 describe Hand do
 
@@ -93,3 +82,17 @@ describe Hand do
     end
   end
 end
+
+#ハンドインスタンス同士の要素が一致しているのかを確認する
+RSpec::Matchers.define :be_same_cards_array do |output_cards|
+  match do |input_cards|
+    input_cards.each_with_index do |card,index|
+
+       if card!=output_cards[index]
+         return
+       end 
+    end
+  end
+end
+
+

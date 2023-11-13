@@ -9,7 +9,7 @@ class RescueJsonParseErrors
     rescue ActionDispatch::ParamsParser::ParseError => _e
       return [
         400, { 'Content-Type' => 'application/json' },
-        [{ error: '不正なJSON形式でのリクエストが行われました' }.to_json]
+        [{ :error => '不正なJSON形式でのリクエストが行われました' }.to_json]
       ]
     end
   end

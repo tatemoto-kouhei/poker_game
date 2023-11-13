@@ -3,12 +3,12 @@ require 'grape'
 require 'rails_helper'
 require_relative '../../../../app/apis/api/ver1/poker.rb'
 
-RSpec.describe API::Ver1::Poker, type: :request do
+RSpec.describe API::Ver1::Poker, :type => :request do
   describe 'POST /api/poker' do
     context '有効な入力の場合' do
       let(:valid_input) do
         {
-          cards: [
+          :cards => [
             "H1 H13 H12 H11 H10",
             "H9 C9 S9 H2 C2",
             "C13 D12 C11 H8 H7"
@@ -43,7 +43,7 @@ RSpec.describe API::Ver1::Poker, type: :request do
     context '無効な入力の場合' do
       let(:invalid_input) do
         {
-          cards: [
+          :cards => [
             "H1 H13 H12 H11 H10",
             "H9 C9 S9 H2 C2",
             "H5 C10 S1 H6 C4 D2"

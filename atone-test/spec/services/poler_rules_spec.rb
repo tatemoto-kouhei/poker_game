@@ -1,4 +1,4 @@
-require "../../app/services/poker_rules.rb"  # テスト対象のコードファイルをインポート
+require_relative "../../app/services/poker_rules.rb"  # テスト対象のコードファイルをインポート
 
 describe PokerRules do
   let(:hand) { Hand.new }

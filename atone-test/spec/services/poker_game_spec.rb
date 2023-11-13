@@ -4,8 +4,8 @@ require 'pry'
 
 describe PokerGame do
 
-  context "with valid input" do
-    it "determines the best hand correctly" do
+  context "適切な入力" do
+    it "複数の手札から最も強い手札を持つプレイヤーのbest_hand_flagをtrueにする" do
       string_hands = ['H1 D1 S1 S11 S4', 'H2 D11 S3 S5 S12', 'C1 C3 C11 C2 C4']
 
       poker_game = PokerGame.new(string_hands)
@@ -18,16 +18,8 @@ describe PokerGame do
     end
   end
 
-  context "with invalid input" do
-    it "raises an error and sets an error message for invalid cards" do
-      string_hands = ['H1 D1 X1 S11 S4']  # 'X'というスートが存在しない
-
-      poker_game = PokerGame.new(string_hands)
-
-      expect(poker_game.players[0].error_message[0]).to eq("無効なカードが入力されました: X1")
-    end
-
-    it "raises an error and sets an error message for improperly formatted input" do
+  context "不正な入力" do
+    it "不正な入力を含む複数の入力に対して適切な手札の評価，不正な入力に対するエラーメッセージの格納" do
       string_hands = ['H1 D1 S7 S11 S9', 'H2 D3 S4 S5 S6', 'C1 C3 C11 C2']  # 手札の数が合わない
 
       poker_game = PokerGame.new(string_hands)

@@ -1,4 +1,4 @@
-require "../../app/services/card.rb"
+require_relative "../../app/services/card.rb"
 
 #カードクラスのテスト
 RSpec.describe Card do

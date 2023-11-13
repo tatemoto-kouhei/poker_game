@@ -32,16 +32,16 @@ module ForJson
 
     if errors.empty?
       {
-        result: result
+        :result => result
       }
     elsif result.empty?
       {
-        error: errors
+        :error => errors
       }
     else
       {
-        result: result,
-        error: errors
+        :result => result,
+        :error => errors
       }
     end
   end
