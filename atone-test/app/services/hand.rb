@@ -1,5 +1,3 @@
-require_relative 'card.rb'
-require_relative 'deck.rb'
 
 # ハンドクラス
 class Hand

@@ -1,8 +1,3 @@
-require_relative '../services/hand.rb'
-require_relative '../services/deck.rb'
-require_relative '../services/poker_game.rb'
-require_relative '../services/poker_rules.rb'
-
 
 class HomeController < ApplicationController
 

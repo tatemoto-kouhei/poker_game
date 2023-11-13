@@ -1,7 +1,4 @@
-require 'pry'
-require_relative 'deck.rb'
-require_relative 'player.rb'
-require_relative 'poker_rules.rb'
+
 # 手札が複数ある場合にどの手札が一番強いかを判定する
 class PokerGame 
   attr_reader :players
@@ -30,7 +27,7 @@ class PokerGame
     end
   end
 
-  #手札に対する役を判定する
+  #複数の手札の中から最も強い役を評価する
   def find_best_hand
     @players.each do |player|
       if player.error_message.empty?
@@ -42,7 +39,7 @@ class PokerGame
     end
   end
 
-  #複数の手札の中から最も強い役を判定し
+  #最も強い役を持つプレイヤーのbest_hand_flagをtrueにする
   def evaluate_best_hand_player
     find_best_hand
     @players.each do |player|

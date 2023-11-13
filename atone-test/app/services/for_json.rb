@@ -1,9 +1,7 @@
 require 'json'
-require_relative 'poker_game.rb'
-require_relative 'player.rb'
+
 
 module ForJson
-
   # アウトプット用メソッド
   def players_info_as_json(game)
     players = game.players

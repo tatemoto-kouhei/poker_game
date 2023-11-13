@@ -1,4 +1,3 @@
-require 'pry'
 
 # カードクラス
 class Card

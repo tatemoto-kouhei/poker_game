@@ -1,4 +1,3 @@
-require_relative 'card.rb'
 
 # デッキクラス
 class Deck

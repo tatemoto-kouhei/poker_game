@@ -1,6 +1,3 @@
-require_relative 'hand.rb'
-require_relative 'card.rb'
-
 # ポーカーの役を判定するクラス
 module PokerRules
 

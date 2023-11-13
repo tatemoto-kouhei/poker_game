@@ -1,4 +1,3 @@
-require_relative 'hand.rb'
 
 # プレイヤークラス（API用）
 class Player

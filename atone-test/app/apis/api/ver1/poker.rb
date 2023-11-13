@@ -1,9 +1,4 @@
 require 'json'
-require 'pry'
-require_relative '../../../services/poker_game.rb'
-require_relative '../../../services/for_json.rb'
-
-
 
 module API	
   module Ver1
