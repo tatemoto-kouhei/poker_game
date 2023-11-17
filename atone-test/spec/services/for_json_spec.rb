@@ -1,12 +1,8 @@
 require 'json'
-require 'pry'
-require_relative '../../app/services/poker_game.rb'
-require_relative '../../app/services/player.rb'
-require_relative '../../app/services/for_json.rb'
+require 'rails_helper'
 
 
-
-RSpec.describe ForJson do
+RSpec.describe "ForJson" do
   describe '#players_info_as_json' do
     it 'エラーがない時のJSON形式でのアウトプット' do
       # 適切な手札でテスト用のポーカーゲームを生成

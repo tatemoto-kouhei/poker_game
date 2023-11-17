@@ -1,7 +1,6 @@
-require_relative "../../app/services/deck.rb"
-require "pry"
+require 'rails_helper'
 
-describe Deck do
+describe "Deck" do
 #カードをデッキに正しく追加できているか
   context '#add_card' do
     it 'デッキにカードを追加する' do

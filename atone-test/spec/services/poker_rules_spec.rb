@@ -1,6 +1,6 @@
-require_relative "../../app/services/poker_rules.rb"  # テスト対象のコードファイルをインポート
+require 'rails_helper'
 
-describe PokerRules do
+describe "PokerRules" do
   let(:hand) { Hand.new }
 
   context 'ポーカーの役を評価する' do

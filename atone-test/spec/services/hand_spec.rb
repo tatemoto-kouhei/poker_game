@@ -1,7 +1,8 @@
-require_relative "../../app/services/hand.rb"
+# require_relative "../../app/services/hand.rb"
+require 'rails_helper'
 require "pry"
 
-describe Hand do
+describe "hand" do
 
   describe "#add_card" do
     context 'ハンドインスタンスにカードインスタンスを格納する' do

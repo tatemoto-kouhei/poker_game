@@ -1,12 +1,7 @@
-require_relative '../../app/services/deck.rb'
-require_relative '../../app/services/card.rb'
-require_relative '../../app/services/hand.rb'
-require_relative '../../app/services/player.rb'
-require 'pry'
+require 'rails_helper'
 
 
-
-RSpec.describe Player do
+RSpec.describe "Player" do
   context '適切な入力' do
     it '適切な入力に対してそれぞれのインスタンス変数が適切に初期化されている' do
       deck = Deck.new

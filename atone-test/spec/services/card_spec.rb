@@ -1,7 +1,6 @@
-require_relative "../../app/services/card.rb"
-
+require 'rails_helper'
 #カードクラスのテスト
-RSpec.describe Card do
+RSpec.describe "Card" do
   it '存在するスート，ランクの入力に対して適切に初期化されている' do
 
     card = Card.new('C', '5')

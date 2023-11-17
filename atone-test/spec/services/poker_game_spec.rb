@@ -1,8 +1,6 @@
-require_relative '../../app/services/poker_game.rb'
-require 'pry'
+require 'rails_helper'
 
-
-describe PokerGame do
+describe "PokerGame" do
 
   context "適切な入力" do
     it "複数の手札から最も強い手札を持つプレイヤーのbest_hand_flagをtrueにする" do
